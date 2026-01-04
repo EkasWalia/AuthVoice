@@ -1,24 +1,24 @@
 AuthVoice – Deepfake Voice Detection API
 
-AuthVoice is a prototype system that analyzes a short voice sample and tells whether it sounds like a **real human recording** or a likely **AI‑generated / manipulated** voice. It’s designed as an extra security layer for calls, fintech, and support flows.[web:92][web:96]
+AuthVoice is a prototype system that analyzes a short voice sample and tells whether it sounds like a **real human recording** or a likely **AI‑generated / manipulated** voice. It’s designed as an extra security layer for calls, fintech, and support flows.
 
 ✨ Features
 
-- REST **API** built with FastAPI (`/api/detect-voice`).[web:105]
-- Accepts an uploaded audio file (`.wav`).[web:101]
-- Extracts MFCC and other audio features to characterize the voice signal.[web:92][web:96]
-- Runs the features through a neural‑network classifier (TensorFlow/Keras).[web:94][web:100]
+- REST **API** built with FastAPI (`/api/detect-voice`).
+- Accepts an uploaded audio file (`.wav`).
+- Extracts MFCC and other audio features to characterize the voice signal.
+- Runs the features through a neural‑network classifier (TensorFlow/Keras).
 - Returns a JSON verdict:
   - `is_real` – True/False  
   - `confidence` – model confidence  
   - `risk_level` – e.g. `SAFE`, `SUSPICIOUS`, `DEEPFAKE`  
 
-This is a **hackathon MVP**, not a production‑grade detector. Real‑world deployment requires larger datasets and robust training.[web:94][web:100]
+This is a **hackathon MVP**, not a production‑grade detector. Real‑world deployment requires larger datasets and robust training.
 
  🧱 Tech Stack
 
-- **Backend:** Python, FastAPI, Uvicorn[web:105]
-- **ML / Audio:** TensorFlow / Keras, Librosa, NumPy, scikit‑learn[web:92][web:96]
+- **Backend:** Python, FastAPI, Uvicorn
+- **ML / Audio:** TensorFlow / Keras, Librosa, NumPy, scikit‑learn
 - **Interface for testing:** FastAPI Swagger UI (`/docs`)
 
  📂 Project Structure
@@ -75,7 +75,7 @@ uvicorn main:app --reload --port 8000
 
 ### Option 1 – Swagger UI
 
-1. Open `http://127.0.0.1:8000/docs` in a browser.[web:105]  
+1. Open `http://127.0.0.1:8000/docs` in a browser.
 2. Find `POST /api/detect-voice`.  
 3. Click **Try it out** → upload a `.wav` file → **Execute**.  
 4. Response example:
@@ -100,27 +100,27 @@ curl -X POST "http://127.0.0.1:8000/api/detect-voice" \
   -F "file=@real_sample.wav"
 ```
 
-Replace `real_sample.wav` with a path to your own audio file.[web:101]
+Replace `real_sample.wav` with a path to your own audio file.
 
  🧠 How It Works (High Level)
 
-1. **Upload audio** – user sends a short `.wav` voice clip.[web:101][web:105]  
+1. **Upload audio** – user sends a short `.wav` voice clip.
 2. **Feature extraction** – `voice_detector.py` uses Librosa to compute:
    - MFCCs  
-   - Energy, zero‑crossing rate, spectral centroid[web:92][web:96]  
-3. **Classification** – features are normalized and passed to a small neural network that outputs a probability of “real vs fake”.[web:94][web:98][web:100]  
+   - Energy, zero‑crossing rate, spectral centroid 
+3. **Classification** – features are normalized and passed to a small neural network that outputs a probability of “real vs fake”. 
 4. **Decision logic** – probability is converted into `is_real`, `confidence`, and a human‑readable `risk_level`.
 
 🔒 Intended Use Cases (Concept)
 
-- Extra security for **high‑risk voice flows** (limit changes, large payments).[web:52][web:61]
-- Flagging **AI‑cloned scam calls** and replayed recordings.[web:98][web:100]
-- Verifying suspicious **voice notes** or “leaked audio” clips.[web:92][web:96]
+- Extra security for **high‑risk voice flows** (limit changes, large payments).
+- Flagging **AI‑cloned scam calls** and replayed recordings.
+- Verifying suspicious **voice notes** or “leaked audio” clips.
 
 ⚠️ Disclaimer
 
 This is a **prototype research project**, not a production‑ready security product.  
-Detection performance depends heavily on training data, recording quality, and the types of AI models used to generate fake audio.[web:92][web:96][web:100]
+Detection performance depends heavily on training data, recording quality, and the types of AI models used to generate fake audio.
 
  📜 License (MIT)
 
@@ -146,3 +146,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
