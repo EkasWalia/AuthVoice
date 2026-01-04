@@ -36,7 +36,7 @@ AuthVoice/
  1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/AuthVoice.git
+git clone https://github.com/EkasWalia/AuthVoice.git
 cd AuthVoice/Backend
 ```
 
