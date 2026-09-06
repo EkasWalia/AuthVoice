@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-void text-slate-200 font-body antialiased;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 15% 0%, rgba(139,123,255,0.10), transparent),
+    radial-gradient(ellipse 70% 50% at 85% 10%, rgba(79,216,255,0.10), transparent);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(79, 216, 255, 0.25);
+}
+
+/* Visible keyboard focus */
+:focus-visible {
+  outline: 2px solid #4fd8ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+  border: 1px solid rgba(148, 197, 255, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #4fd8ff, #8b7bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mono-tag {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  letter-spacing: 0.02em;
+}
